@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python311", "pango", "gdk-pixbuf", "shared-mime-info", "fontconfig", "freetype"]
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "gunicorn app:app"

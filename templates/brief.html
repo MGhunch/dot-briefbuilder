@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunch Brief Builder</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="showPage(1)">Page 1: The Brief</button>
+            <button class="tab" onclick="showPage(2)">Page 2: The Springboard</button>
+            <button class="tab" onclick="showPage(3)">Page 3: The Detail</button>
+        </div>
+        
+        <!-- PAGE 1: THE BRIEF -->
+        <div class="page active" id="page1">
+            <div class="version-bar">
+                <div class="version-info">
+                    <span class="version-badge" id="versionBadge">v1</span>
+                    <span id="versionStatus">Draft</span>
+                </div>
+                <div class="version-actions">
+                    <button class="version-btn" onclick="loadFromJson()">Load JSON</button>
+                    <button class="version-btn" onclick="copyJson()">Copy JSON</button>
+                    <button class="version-btn primary" onclick="exportPdf()">Export PDF</button>
+                </div>
+            </div>
+            
+            <div class="logo">
+                <div class="logo-mark">h</div>
+                <div class="logo-text">BRIEF</div>
+            </div>
+            
+            <div class="job-info">
+                <div class="job-field">
+                    <label>Job Name</label>
+                    <input type="text" id="jobName" placeholder="e.g. TOW 088 | 90-Day Pre Renewal" oninput="updateState()">
+                </div>
+                <div class="job-field">
+                    <label>Project Lead</label>
+                    <input type="text" id="projectLead" placeholder="e.g. Emma" oninput="updateState()">
+                </div>
+                <div class="job-field">
+                    <label>Hunch Lead</label>
+                    <input type="text" id="hunchLead" placeholder="e.g. Michael" oninput="updateState()">
+                </div>
+                <div class="job-field">
+                    <label>Date / Version</label>
+                    <input type="text" id="date" placeholder="e.g. 27 Jan – v1" oninput="updateState()">
+                </div>
+            </div>
+            
+            <div class="section-header">The Topline</div>
+            
+            <table class="topline-table">
+                <tr>
+                    <td>THE NEED</td>
+                    <td><textarea id="need" placeholder="What problem are we solving?" oninput="updateState()"></textarea></td>
+                </tr>
+                <tr>
+                    <td>OBJECTIVES</td>
+                    <td><textarea id="objectives" placeholder="What does success look like?" oninput="updateState()"></textarea></td>
+                </tr>
+                <tr>
+                    <td>OUTPUTS</td>
+                    <td><textarea id="outputs" placeholder="What are we actually making?" oninput="updateState()"></textarea></td>
+                </tr>
+                <tr>
+                    <td>KEY DATES</td>
+                    <td><textarea id="dates" placeholder="When do things need to happen?" oninput="updateState()"></textarea></td>
+                </tr>
+            </table>
+            
+            <div class="section-header">The Strategy</div>
+            
+            <div class="hunch-box">
+                <div class="hunch-label">Our Hunch</div>
+                <input type="text" class="hunch-input" id="hunch" placeholder="The strategic unlock..." oninput="syncStrategy('hunch')">
+            </div>
+            
+            <div class="gtb-container">
+                <div class="gtb-row">
+                    <span class="gtb-label">GET</span>
+                    <input type="text" class="gtb-input" id="get" placeholder="Who are we trying to move?" oninput="syncStrategy('get')">
+                </div>
+                <div class="gtb-row">
+                    <span class="gtb-label">TO</span>
+                    <input type="text" class="gtb-input" id="to" placeholder="What do we want them to do?" oninput="syncStrategy('to')">
+                </div>
+                <div class="gtb-row">
+                    <span class="gtb-label">BY</span>
+                    <input type="text" class="gtb-input" id="by" placeholder="How will we make that happen?" oninput="syncStrategy('by')">
+                </div>
+            </div>
+            
+            <div class="sync-note">↔ Strategy syncs with Page 2</div>
+        </div>
+        
+        <!-- PAGE 2: THE SPRINGBOARD -->
+        <div class="page" id="page2">
+            <div class="logo">
+                <div class="logo-mark">h</div>
+                <div class="logo-text">BRIEF</div>
+            </div>
+            
+            <div class="section-header">The Springboard</div>
+            <p class="section-intro">Four questions that earn the strategy.</p>
+            
+            <div class="question-block">
+                <div class="question-label">1. What's actually going on?</div>
+                <div class="question-hint">The business context. Why are we even talking about this?</div>
+                <textarea class="question-input" id="q1" placeholder="The situation..." oninput="updateState()"></textarea>
+            </div>
+            
+            <div class="question-block">
+                <div class="question-label">2. Who do we need to convince?</div>
+                <div class="question-hint">The human. Be specific – not a segment, a real person.</div>
+                <textarea class="question-input" id="q2" placeholder="The audience..." oninput="updateState()"></textarea>
+            </div>
+            
+            <div class="question-block">
+                <div class="question-label">3. Why will anyone care?</div>
+                <div class="question-hint">The motivation. What does our human actually care about?</div>
+                <textarea class="question-input" id="q3" placeholder="The hook..." oninput="updateState()"></textarea>
+            </div>
+            
+            <div class="question-block">
+                <div class="question-label">4. What's holding them back?</div>
+                <div class="question-hint">The friction. Inertia, scepticism, apathy, alternatives.</div>
+                <textarea class="question-input" id="q4" placeholder="The barriers..." oninput="updateState()"></textarea>
+            </div>
+            
+            <div class="hunch-box">
+                <div class="hunch-label">Our Hunch</div>
+                <input type="text" class="hunch-input" id="hunch2" placeholder="The strategic unlock that emerges..." oninput="syncStrategy('hunch2')">
+            </div>
+            
+            <div class="gtb-container">
+                <div class="gtb-row">
+                    <span class="gtb-label">GET</span>
+                    <input type="text" class="gtb-input" id="get2" placeholder="Who are we trying to move?" oninput="syncStrategy('get2')">
+                </div>
+                <div class="gtb-row">
+                    <span class="gtb-label">TO</span>
+                    <input type="text" class="gtb-input" id="to2" placeholder="What do we want them to do?" oninput="syncStrategy('to2')">
+                </div>
+                <div class="gtb-row">
+                    <span class="gtb-label">BY</span>
+                    <input type="text" class="gtb-input" id="by2" placeholder="How will we make that happen?" oninput="syncStrategy('by2')">
+                </div>
+            </div>
+            
+            <div class="sync-note">↔ Strategy syncs with Page 1</div>
+        </div>
+        
+        <!-- PAGE 3: THE DETAIL -->
+        <div class="page" id="page3">
+            <div class="logo">
+                <div class="logo-mark">h</div>
+                <div class="logo-text">BRIEF</div>
+            </div>
+            
+            <div class="section-header">The Detail</div>
+            
+            <div class="detail-controls">
+                <span class="detail-controls-label">Sections:</span>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleProofPoints" checked onchange="toggleSection('proofPointsSection')"> Proof Points
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleMandatories" checked onchange="toggleSection('mandatoriesSection')"> Mandatories
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleQuestions" checked onchange="toggleSection('questionsSection')"> Questions
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleResearch" onchange="toggleSection('researchSection')"> Research
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleAppendix" onchange="toggleSection('appendixSection')"> Appendix
+                </label>
+                <button class="add-custom-btn" onclick="addCustomSection()">+ Custom</button>
+            </div>
+            
+            <div id="detailSections">
+                <div class="detail-section" id="proofPointsSection">
+                    <div class="detail-section-header">
+                        <span>PROOF POINTS</span>
+                    </div>
+                    <textarea id="proofPoints" class="detail-textarea" placeholder="Product and brand evidence..." oninput="updateState()"></textarea>
+                </div>
+                
+                <div class="detail-section" id="mandatoriesSection">
+                    <div class="detail-section-header">
+                        <span>MANDATORIES</span>
+                    </div>
+                    <textarea id="mandatories" class="detail-textarea" placeholder="Non-negotiables and constraints..." oninput="updateState()"></textarea>
+                </div>
+                
+                <div class="detail-section" id="questionsSection">
+                    <div class="detail-section-header">
+                        <span>QUESTIONS</span>
+                    </div>
+                    <textarea id="questions" class="detail-textarea" placeholder="What's still unclear?" oninput="updateState()"></textarea>
+                </div>
+                
+                <div class="detail-section hidden" id="researchSection">
+                    <div class="detail-section-header">
+                        <span>RESEARCH</span>
+                    </div>
+                    <textarea id="research" class="detail-textarea" placeholder="Background research and findings..." oninput="updateState()"></textarea>
+                </div>
+                
+                <div class="detail-section hidden" id="appendixSection">
+                    <div class="detail-section-header">
+                        <span>APPENDIX</span>
+                    </div>
+                    <textarea id="appendix" class="detail-textarea" placeholder="Additional reference material..." oninput="updateState()"></textarea>
+                </div>
+            </div>
+            
+            <div id="customSections"></div>
+        </div>
+    </div>
+    
+    <!-- JSON Modal -->
+    <div class="modal" id="jsonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Load Brief from JSON</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <textarea id="jsonInput" placeholder="Paste JSON here..."></textarea>
+            <div class="modal-actions">
+                <button class="version-btn" onclick="closeModal()">Cancel</button>
+                <button class="version-btn primary" onclick="applyJson()">Load</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>

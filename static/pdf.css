@@ -1,0 +1,193 @@
+@page {
+    size: A4;
+    margin: 2cm;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #333;
+}
+
+.page {
+    page-break-after: always;
+}
+
+.page:last-child {
+    page-break-after: avoid;
+}
+
+/* Header */
+.header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-mark {
+    width: 36px;
+    height: 36px;
+    background: #ED1C24;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.job-title {
+    font-size: 18pt;
+    font-weight: 600;
+    color: #333;
+    margin: 20px 0 15px 0;
+}
+
+/* Meta table */
+.meta-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.meta-table td {
+    padding: 6px 10px;
+    border: 1px solid #eee;
+}
+
+.meta-label {
+    background: #f9f9f9;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #666;
+    width: 100px;
+}
+
+.meta-value {
+    font-size: 10pt;
+}
+
+/* Section headers */
+.section-header {
+    background: #ED1C24;
+    color: white;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 20px 0 12px 0;
+    border-radius: 3px;
+}
+
+/* Content tables */
+.content-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.content-table td {
+    padding: 10px 12px;
+    border: 1px solid #eee;
+    vertical-align: top;
+}
+
+.content-table .label {
+    width: 120px;
+    background: #f9f9f9;
+    font-weight: 600;
+    font-size: 9pt;
+    color: #666;
+}
+
+.content-table .content {
+    font-size: 10pt;
+    line-height: 1.5;
+}
+
+.label-hint {
+    font-weight: normal;
+    font-size: 8pt;
+    color: #999;
+    font-style: italic;
+}
+
+/* Hunch box */
+.hunch-box {
+    background: #fef2f2;
+    border: 2px solid #ED1C24;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.hunch-label {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #ED1C24;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.hunch-content {
+    font-size: 12pt;
+    font-style: italic;
+    color: #333;
+}
+
+/* GET TO BY box */
+.gtb-box {
+    background: #333;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.gtb-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.gtb-row:last-child {
+    margin-bottom: 0;
+}
+
+.gtb-label {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #ED1C24;
+    width: 35px;
+    flex-shrink: 0;
+}
+
+.gtb-content {
+    font-size: 10pt;
+    color: white;
+}
+
+/* Springboard specific */
+.springboard .label {
+    width: 140px;
+}

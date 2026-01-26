@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ brief.meta.jobName or 'Hunch Brief' }}</title>
+</head>
+<body>
+    <!-- PAGE 1: THE BRIEF -->
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-mark">h</div>
+                <div class="logo-text">BRIEF</div>
+            </div>
+        </div>
+        
+        <h1 class="job-title">{{ brief.meta.jobName }}</h1>
+        
+        <table class="meta-table">
+            <tr>
+                <td class="meta-label">Project Lead</td>
+                <td class="meta-value">{{ brief.meta.projectLead }}</td>
+                <td class="meta-label">Hunch Lead</td>
+                <td class="meta-value">{{ brief.meta.hunchLead }}</td>
+            </tr>
+            <tr>
+                <td class="meta-label">Date</td>
+                <td class="meta-value" colspan="3">{{ brief.meta.date }}</td>
+            </tr>
+        </table>
+        
+        <div class="section-header">The Topline</div>
+        
+        <table class="content-table">
+            <tr>
+                <td class="label">THE NEED</td>
+                <td class="content">{{ brief.topline.need }}</td>
+            </tr>
+            <tr>
+                <td class="label">OBJECTIVES</td>
+                <td class="content">{{ brief.topline.objectives | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            <tr>
+                <td class="label">OUTPUTS</td>
+                <td class="content">{{ brief.topline.outputs | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            <tr>
+                <td class="label">KEY DATES</td>
+                <td class="content">{{ brief.topline.dates | replace('\n', '<br>') | safe }}</td>
+            </tr>
+        </table>
+        
+        <div class="section-header">The Strategy</div>
+        
+        <div class="hunch-box">
+            <div class="hunch-label">OUR HUNCH</div>
+            <div class="hunch-content">{{ brief.strategy.hunch }}</div>
+        </div>
+        
+        <div class="gtb-box">
+            <div class="gtb-row">
+                <span class="gtb-label">GET</span>
+                <span class="gtb-content">{{ brief.strategy.get }}</span>
+            </div>
+            <div class="gtb-row">
+                <span class="gtb-label">TO</span>
+                <span class="gtb-content">{{ brief.strategy.to }}</span>
+            </div>
+            <div class="gtb-row">
+                <span class="gtb-label">BY</span>
+                <span class="gtb-content">{{ brief.strategy.by }}</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PAGE 2: THE SPRINGBOARD -->
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-mark">h</div>
+                <div class="logo-text">BRIEF</div>
+            </div>
+        </div>
+        
+        <div class="section-header">The Springboard</div>
+        
+        <table class="content-table springboard">
+            <tr>
+                <td class="label">WHAT?<br><span class="label-hint">What's actually going on?</span></td>
+                <td class="content">{{ brief.springboard.q1 }}</td>
+            </tr>
+            <tr>
+                <td class="label">WHO?<br><span class="label-hint">Who do we need to convince?</span></td>
+                <td class="content">{{ brief.springboard.q2 }}</td>
+            </tr>
+            <tr>
+                <td class="label">WHY?<br><span class="label-hint">Why will anyone care?</span></td>
+                <td class="content">{{ brief.springboard.q3 }}</td>
+            </tr>
+            <tr>
+                <td class="label">WHY NOT?<br><span class="label-hint">What's holding them back?</span></td>
+                <td class="content">{{ brief.springboard.q4 }}</td>
+            </tr>
+        </table>
+        
+        <div class="hunch-box">
+            <div class="hunch-label">OUR HUNCH</div>
+            <div class="hunch-content">{{ brief.strategy.hunch }}</div>
+        </div>
+        
+        <div class="gtb-box">
+            <div class="gtb-row">
+                <span class="gtb-label">GET</span>
+                <span class="gtb-content">{{ brief.strategy.get }}</span>
+            </div>
+            <div class="gtb-row">
+                <span class="gtb-label">TO</span>
+                <span class="gtb-content">{{ brief.strategy.to }}</span>
+            </div>
+            <div class="gtb-row">
+                <span class="gtb-label">BY</span>
+                <span class="gtb-content">{{ brief.strategy.by }}</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PAGE 3: THE DETAIL -->
+    <div class="page">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-mark">h</div>
+                <div class="logo-text">BRIEF</div>
+            </div>
+        </div>
+        
+        <div class="section-header">The Detail</div>
+        
+        <table class="content-table">
+            {% if brief.settings.showProofPoints and brief.detail.proofPoints %}
+            <tr>
+                <td class="label">PROOF POINTS</td>
+                <td class="content">{{ brief.detail.proofPoints | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            {% endif %}
+            {% if brief.settings.showMandatories and brief.detail.mandatories %}
+            <tr>
+                <td class="label">MANDATORIES</td>
+                <td class="content">{{ brief.detail.mandatories | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            {% endif %}
+            {% if brief.settings.showQuestions and brief.detail.questions %}
+            <tr>
+                <td class="label">QUESTIONS</td>
+                <td class="content">{{ brief.detail.questions | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            {% endif %}
+            {% if brief.settings.showResearch and brief.detail.research %}
+            <tr>
+                <td class="label">RESEARCH</td>
+                <td class="content">{{ brief.detail.research | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            {% endif %}
+            {% if brief.settings.showAppendix and brief.detail.appendix %}
+            <tr>
+                <td class="label">APPENDIX</td>
+                <td class="content">{{ brief.detail.appendix | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+</body>
+</html>
