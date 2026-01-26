@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-
 @page {
     size: A4;
     margin: 2cm;
@@ -12,7 +10,7 @@
 }
 
 body {
-    font-family: 'DM Sans', Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 10pt;
     line-height: 1.4;
     color: #333;
@@ -29,6 +27,11 @@ body {
 /* Header */
 .header {
     margin-bottom: 20px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
 }
 
 .logo {
