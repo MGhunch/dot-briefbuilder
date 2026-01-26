@@ -54,6 +54,25 @@ function showPage(num) {
     });
 }
 
+// Update status text across all pages
+function setStatus(text) {
+    document.getElementById('versionStatus').textContent = text;
+    const status2 = document.getElementById('versionStatus2');
+    const status3 = document.getElementById('versionStatus3');
+    if (status2) status2.textContent = text;
+    if (status3) status3.textContent = text;
+}
+
+// Update version badge across all pages
+function setVersionBadge(version) {
+    const badge = 'v' + version;
+    document.getElementById('versionBadge').textContent = badge;
+    const badge2 = document.getElementById('versionBadge2');
+    const badge3 = document.getElementById('versionBadge3');
+    if (badge2) badge2.textContent = badge;
+    if (badge3) badge3.textContent = badge;
+}
+
 // Update state from form
 function updateState() {
     // Meta
@@ -95,16 +114,12 @@ function updateState() {
     briefState.settings.showAppendix = document.getElementById('toggleAppendix').checked;
     
     // Update status
-    document.getElementById('versionStatus').textContent = 'Unsaved changes';
+    setStatus('Unsaved changes');
 }
 
 // Sync strategy fields between pages
 function syncStrategy(sourceId) {
     const value = document.getElementById(sourceId).value;
-    
-    // Determine the base field name and sync
-    const baseId = sourceId.replace('2', '');
-    const isPrimary = sourceId === baseId;
     
     if (sourceId === 'hunch' || sourceId === 'hunch2') {
         document.getElementById('hunch').value = value;
@@ -124,7 +139,7 @@ function syncStrategy(sourceId) {
         briefState.strategy.by = value;
     }
     
-    document.getElementById('versionStatus').textContent = 'Unsaved changes';
+    setStatus('Unsaved changes');
 }
 
 // Toggle detail sections
@@ -144,7 +159,7 @@ function addCustomSection() {
     section.innerHTML = `
         <div class="custom-section-header">
             <input type="text" class="custom-section-title" placeholder="SECTION TITLE" data-index="${customSectionCount}">
-            <button class="remove-custom-btn" onclick="removeCustomSection('customSection${customSectionCount}')">&times;</button>
+            <button class="remove-custom-btn" onclick="removeCustomSection('customSection${customSectionCount}')">×</button>
         </div>
         <textarea class="detail-textarea" placeholder="Add content..." data-index="${customSectionCount}"></textarea>
     `;
@@ -172,7 +187,7 @@ function applyJson() {
         briefState = json;
         populateForm();
         closeModal();
-        document.getElementById('versionStatus').textContent = 'Loaded from JSON';
+        setStatus('Loaded from JSON');
     } catch (e) {
         alert('Invalid JSON: ' + e.message);
     }
@@ -185,7 +200,7 @@ function populateForm() {
     document.getElementById('projectLead').value = briefState.meta.projectLead || '';
     document.getElementById('hunchLead').value = briefState.meta.hunchLead || '';
     document.getElementById('date').value = briefState.meta.date || '';
-    document.getElementById('versionBadge').textContent = 'v' + (briefState.meta.version || 1);
+    setVersionBadge(briefState.meta.version || 1);
     
     // Topline
     document.getElementById('need').value = briefState.topline.need || '';
@@ -236,14 +251,14 @@ function copyJson() {
     updateState();
     const json = JSON.stringify(briefState, null, 2);
     navigator.clipboard.writeText(json).then(() => {
-        document.getElementById('versionStatus').textContent = 'JSON copied to clipboard';
+        setStatus('JSON copied to clipboard');
     });
 }
 
 // Export to PDF
 async function exportPdf() {
     updateState();
-    document.getElementById('versionStatus').textContent = 'Generating PDF...';
+    setStatus('Generating PDF...');
     
     try {
         const response = await fetch('/api/pdf', {
@@ -264,18 +279,18 @@ async function exportPdf() {
             a.click();
             window.URL.revokeObjectURL(url);
             a.remove();
-            document.getElementById('versionStatus').textContent = 'PDF downloaded';
+            setStatus('PDF downloaded');
         } else {
             throw new Error('PDF generation failed');
         }
     } catch (e) {
-        document.getElementById('versionStatus').textContent = 'Error: ' + e.message;
+        setStatus('Error: ' + e.message);
     }
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Set default date
+    // Set default date with proper en-dash
     const today = new Date();
     const dateStr = today.toLocaleDateString('en-NZ', { day: 'numeric', month: 'short' });
     document.getElementById('date').value = dateStr + ' – v1';
