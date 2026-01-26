@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hunch Brief Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -29,8 +32,7 @@
             </div>
             
             <div class="logo">
-                <div class="logo-mark">h</div>
-                <div class="logo-text">BRIEF</div>
+                <img src="/static/images/header-brief.png" alt="Hunch Brief">
             </div>
             
             <div class="job-info">
@@ -95,14 +97,25 @@
                 </div>
             </div>
             
-            <div class="sync-note">↔ Strategy syncs with Page 2</div>
+            <div class="sync-note">↕ Strategy syncs with Page 2</div>
         </div>
         
         <!-- PAGE 2: THE SPRINGBOARD -->
         <div class="page" id="page2">
+            <div class="version-bar">
+                <div class="version-info">
+                    <span class="version-badge" id="versionBadge2">v1</span>
+                    <span id="versionStatus2">Draft</span>
+                </div>
+                <div class="version-actions">
+                    <button class="version-btn" onclick="loadFromJson()">Load JSON</button>
+                    <button class="version-btn" onclick="copyJson()">Copy JSON</button>
+                    <button class="version-btn primary" onclick="exportPdf()">Export PDF</button>
+                </div>
+            </div>
+            
             <div class="logo">
-                <div class="logo-mark">h</div>
-                <div class="logo-text">BRIEF</div>
+                <img src="/static/images/header-brief.png" alt="Hunch Brief">
             </div>
             
             <div class="section-header">The Springboard</div>
@@ -152,14 +165,25 @@
                 </div>
             </div>
             
-            <div class="sync-note">↔ Strategy syncs with Page 1</div>
+            <div class="sync-note">↕ Strategy syncs with Page 1</div>
         </div>
         
         <!-- PAGE 3: THE DETAIL -->
         <div class="page" id="page3">
+            <div class="version-bar">
+                <div class="version-info">
+                    <span class="version-badge" id="versionBadge3">v1</span>
+                    <span id="versionStatus3">Draft</span>
+                </div>
+                <div class="version-actions">
+                    <button class="version-btn" onclick="loadFromJson()">Load JSON</button>
+                    <button class="version-btn" onclick="copyJson()">Copy JSON</button>
+                    <button class="version-btn primary" onclick="exportPdf()">Export PDF</button>
+                </div>
+            </div>
+            
             <div class="logo">
-                <div class="logo-mark">h</div>
-                <div class="logo-text">BRIEF</div>
+                <img src="/static/images/header-brief.png" alt="Hunch Brief">
             </div>
             
             <div class="section-header">The Detail</div>
@@ -187,35 +211,35 @@
             <div id="detailSections">
                 <div class="detail-section" id="proofPointsSection">
                     <div class="detail-section-header">
-                        <span>PROOF POINTS</span>
+                        <span>Proof Points</span>
                     </div>
                     <textarea id="proofPoints" class="detail-textarea" placeholder="Product and brand evidence..." oninput="updateState()"></textarea>
                 </div>
                 
                 <div class="detail-section" id="mandatoriesSection">
                     <div class="detail-section-header">
-                        <span>MANDATORIES</span>
+                        <span>Mandatories</span>
                     </div>
                     <textarea id="mandatories" class="detail-textarea" placeholder="Non-negotiables and constraints..." oninput="updateState()"></textarea>
                 </div>
                 
                 <div class="detail-section" id="questionsSection">
                     <div class="detail-section-header">
-                        <span>QUESTIONS</span>
+                        <span>Questions</span>
                     </div>
                     <textarea id="questions" class="detail-textarea" placeholder="What's still unclear?" oninput="updateState()"></textarea>
                 </div>
                 
                 <div class="detail-section hidden" id="researchSection">
                     <div class="detail-section-header">
-                        <span>RESEARCH</span>
+                        <span>Research</span>
                     </div>
                     <textarea id="research" class="detail-textarea" placeholder="Background research and findings..." oninput="updateState()"></textarea>
                 </div>
                 
                 <div class="detail-section hidden" id="appendixSection">
                     <div class="detail-section-header">
-                        <span>APPENDIX</span>
+                        <span>Appendix</span>
                     </div>
                     <textarea id="appendix" class="detail-textarea" placeholder="Additional reference material..." oninput="updateState()"></textarea>
                 </div>
@@ -230,7 +254,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Load Brief from JSON</h3>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <button class="modal-close" onclick="closeModal()">×</button>
             </div>
             <textarea id="jsonInput" placeholder="Paste JSON here..."></textarea>
             <div class="modal-actions">
