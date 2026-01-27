@@ -8,10 +8,7 @@
     <!-- PAGE 1: THE BRIEF -->
     <div class="page">
         <div class="header">
-            <div class="logo">
-                <div class="logo-mark">h</div>
-                <div class="logo-text">BRIEF</div>
-            </div>
+            <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
         </div>
         
         <h1 class="job-title">{{ brief.meta.jobName }}</h1>
@@ -33,19 +30,23 @@
         
         <table class="content-table">
             <tr>
-                <td class="label">THE NEED</td>
-                <td class="content">{{ brief.topline.need }}</td>
+                <td class="label">THE NEED<br><span class="label-hint">Why does this brief exist?</span></td>
+                <td class="content">{{ brief.topline.need | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">OBJECTIVES</td>
+                <td class="label">THE ASK<br><span class="label-hint">What have we been asked to do?</span></td>
+                <td class="content">{{ brief.topline.ask | replace('\n', '<br>') | safe }}</td>
+            </tr>
+            <tr>
+                <td class="label">OBJECTIVES<br><span class="label-hint">What does success look like?</span></td>
                 <td class="content">{{ brief.topline.objectives | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">OUTPUTS</td>
-                <td class="content">{{ brief.topline.outputs | replace('\n', '<br>') | safe }}</td>
+                <td class="label">SCOPE<br><span class="label-hint">What's in? What's out? What channels?</span></td>
+                <td class="content">{{ brief.topline.scope | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">KEY DATES</td>
+                <td class="label">KEY DATES<br><span class="label-hint">What needs to happen when?</span></td>
                 <td class="content">{{ brief.topline.dates | replace('\n', '<br>') | safe }}</td>
             </tr>
         </table>
@@ -60,7 +61,7 @@
         <div class="gtb-box">
             <div class="gtb-row">
                 <span class="gtb-label">GET</span>
-                <span class="gtb-content">{{ brief.strategy.get }}</span>
+                <span class="gtb-content">{{ brief.strategy['get'] }}</span>
             </div>
             <div class="gtb-row">
                 <span class="gtb-label">TO</span>
@@ -76,10 +77,7 @@
     <!-- PAGE 2: THE SPRINGBOARD -->
     <div class="page">
         <div class="header">
-            <div class="logo">
-                <div class="logo-mark">h</div>
-                <div class="logo-text">BRIEF</div>
-            </div>
+            <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
         </div>
         
         <div class="section-header">The Springboard</div>
@@ -87,19 +85,19 @@
         <table class="content-table springboard">
             <tr>
                 <td class="label">WHAT?<br><span class="label-hint">What's actually going on?</span></td>
-                <td class="content">{{ brief.springboard.q1 }}</td>
+                <td class="content">{{ brief.springboard.q1 | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
                 <td class="label">WHO?<br><span class="label-hint">Who do we need to convince?</span></td>
-                <td class="content">{{ brief.springboard.q2 }}</td>
+                <td class="content">{{ brief.springboard.q2 | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
                 <td class="label">WHY?<br><span class="label-hint">Why will anyone care?</span></td>
-                <td class="content">{{ brief.springboard.q3 }}</td>
+                <td class="content">{{ brief.springboard.q3 | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
                 <td class="label">WHY NOT?<br><span class="label-hint">What's holding them back?</span></td>
-                <td class="content">{{ brief.springboard.q4 }}</td>
+                <td class="content">{{ brief.springboard.q4 | replace('\n', '<br>') | safe }}</td>
             </tr>
         </table>
         
@@ -111,7 +109,7 @@
         <div class="gtb-box">
             <div class="gtb-row">
                 <span class="gtb-label">GET</span>
-                <span class="gtb-content">{{ brief.strategy.get }}</span>
+                <span class="gtb-content">{{ brief.strategy['get'] }}</span>
             </div>
             <div class="gtb-row">
                 <span class="gtb-label">TO</span>
@@ -127,10 +125,7 @@
     <!-- PAGE 3: THE DETAIL -->
     <div class="page">
         <div class="header">
-            <div class="logo">
-                <div class="logo-mark">h</div>
-                <div class="logo-text">BRIEF</div>
-            </div>
+            <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
         </div>
         
         <div class="section-header">The Detail</div>
