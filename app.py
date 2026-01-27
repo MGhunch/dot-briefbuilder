@@ -4,6 +4,7 @@ import os
 from weasyprint import HTML, CSS
 from datetime import datetime
 from logo_b64 import HEADER_LOGO_B64
+from image_data import AI2_LOGO
 
 app = Flask(__name__)
 
@@ -79,8 +80,8 @@ def generate_pdf():
     """Generate PDF from brief data"""
     data = request.get_json()
     
-    # Render the PDF template with logo
-    html_content = render_template('brief_pdf.html', brief=data, logo_b64=HEADER_LOGO_B64)
+    # Render the PDF template with logos
+    html_content = render_template('brief_pdf.html', brief=data, logo_b64=HEADER_LOGO_B64, ai2_logo_b64=AI2_LOGO)
     
     # Generate PDF
     pdf = HTML(string=html_content).write_pdf(
