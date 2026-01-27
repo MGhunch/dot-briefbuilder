@@ -55,14 +55,10 @@
             </tr>
         </table>
         
-        <div class="section-header">The Strategy</div>
+        <div class="section-header">Our Hunch</div>
         
-        <div class="hunch-box">
-            <div class="hunch-label">Our Hunch</div>
+        <div class="strategy-box">
             <div class="hunch-content">{{ brief.strategy.hunch }}</div>
-        </div>
-        
-        <div class="gtb-box">
             <div class="gtb-row">
                 <span class="gtb-label">GET</span>
                 <span class="gtb-content">{{ brief.strategy['get'] }}</span>
@@ -75,6 +71,10 @@
                 <span class="gtb-label">BY</span>
                 <span class="gtb-content">{{ brief.strategy.by }}</span>
             </div>
+        </div>
+        
+        <div class="thinking-link">
+            <span class="page-icon">↪</span> Here's our thinking
         </div>
     </div>
     
@@ -109,12 +109,10 @@
             </tr>
         </table>
         
-        <div class="hunch-box">
-            <div class="hunch-label">Our Hunch</div>
-            <div class="hunch-content">{{ brief.strategy.hunch }}</div>
-        </div>
+        <div class="section-header">Our Hunch</div>
         
-        <div class="gtb-box">
+        <div class="strategy-box">
+            <div class="hunch-content">{{ brief.strategy.hunch }}</div>
             <div class="gtb-row">
                 <span class="gtb-label">GET</span>
                 <span class="gtb-content">{{ brief.strategy['get'] }}</span>
