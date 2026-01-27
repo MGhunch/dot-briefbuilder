@@ -9,8 +9,9 @@ let briefState = {
     },
     topline: {
         need: "",
+        ask: "",
         objectives: "",
-        outputs: "",
+        scope: "",
         dates: ""
     },
     springboard: {
@@ -83,8 +84,9 @@ function updateState() {
     
     // Topline
     briefState.topline.need = document.getElementById('need').value;
+    briefState.topline.ask = document.getElementById('ask').value;
     briefState.topline.objectives = document.getElementById('objectives').value;
-    briefState.topline.outputs = document.getElementById('outputs').value;
+    briefState.topline.scope = document.getElementById('scope').value;
     briefState.topline.dates = document.getElementById('dates').value;
     
     // Springboard
@@ -204,8 +206,9 @@ function populateForm() {
     
     // Topline
     document.getElementById('need').value = briefState.topline.need || '';
+    document.getElementById('ask').value = briefState.topline.ask || '';
     document.getElementById('objectives').value = briefState.topline.objectives || '';
-    document.getElementById('outputs').value = briefState.topline.outputs || '';
+    document.getElementById('scope').value = briefState.topline.scope || '';
     document.getElementById('dates').value = briefState.topline.dates || '';
     
     // Springboard
