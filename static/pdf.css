@@ -27,50 +27,30 @@ body {
 
 /* Header */
 .header {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .logo-img {
-    height: 40px;
+    height: 50px;
     width: auto;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-mark {
-    width: 36px;
-    height: 36px;
-    background: #ED1C24;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.logo-text {
-    font-size: 24px;
+/* Job anchor - the big title under logo */
+.job-anchor {
+    font-size: 16pt;
     font-weight: 700;
     color: #333;
-    letter-spacing: 0.05em;
+    margin: 12px 0 20px 0;
+    letter-spacing: 0.02em;
 }
 
-.job-title {
-    font-size: 18pt;
-    font-weight: 600;
-    color: #333;
-    margin: 20px 0 15px 0;
+.job-anchor .job-number {
+    color: #ED1C24;
 }
 
-/* Meta table */
+/* Meta table - two thirds width */
 .meta-table {
-    width: 100%;
+    width: 66%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
@@ -85,7 +65,7 @@ body {
     font-weight: 500;
     font-size: 8pt;
     color: #666;
-    width: 90px;
+    width: 120px;
     text-transform: uppercase;
     letter-spacing: 0.02em;
 }
@@ -121,9 +101,9 @@ body {
 }
 
 .content-table .label {
-    width: 110px;
+    width: 120px;
     background: #f9f9f9;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 8pt;
     color: #ED1C24;
     text-transform: uppercase;
@@ -142,6 +122,8 @@ body {
     font-style: italic;
     text-transform: none;
     letter-spacing: 0;
+    display: block;
+    margin-top: 3px;
 }
 
 /* Hunch box */
@@ -170,17 +152,17 @@ body {
 
 /* GET TO BY box */
 .gtb-box {
-    background: #333;
+    background: #58595B;
     border-radius: 6px;
-    padding: 15px;
+    padding: 18px 20px;
     margin: 15px 0;
 }
 
 .gtb-row {
     display: flex;
     align-items: baseline;
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
 .gtb-row:last-child {
@@ -188,20 +170,20 @@ body {
 }
 
 .gtb-label {
-    font-size: 10pt;
+    font-size: 12pt;
     font-weight: 700;
     color: #ED1C24;
-    width: 35px;
+    width: 40px;
     flex-shrink: 0;
     letter-spacing: 0.05em;
 }
 
 .gtb-content {
-    font-size: 10pt;
+    font-size: 12pt;
     color: white;
 }
 
 /* Springboard specific */
 .springboard .label {
-    width: 140px;
+    width: 120px;
 }
