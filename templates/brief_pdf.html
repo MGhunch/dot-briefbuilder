@@ -5,11 +5,15 @@
     <title>{{ brief.meta.jobName or 'Hunch Brief' }}</title>
 </head>
 <body>
-    <!-- Static footer - appears on all pages -->
-    <div class="page-footer">
+    <!-- Running footer elements - picked up by @page rules -->
+    <div class="footer-left">
         <img class="footer-logo" src="data:image/webp;base64,{{ ai2_logo_b64 }}" alt="ai²">
+    </div>
+    <div class="footer-center">
         <span class="footer-tagline">agency intuition × artificial intelligence</span>
-        <span class="footer-brand">Hunch Brief</span>
+    </div>
+    <div class="footer-right">
+        <span class="footer-brand">Hunch Brief 2.2</span>
     </div>
 
     <!-- PAGE 1: THE BRIEF -->
