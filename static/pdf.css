@@ -1,6 +1,6 @@
 @page {
     size: A4;
-    margin: 2cm;
+    margin: 2cm 2cm 2.5cm 2cm;
 }
 
 * {
@@ -19,12 +19,62 @@ body {
 
 .page {
     page-break-after: always;
-    position: relative;
-    min-height: 100%;
 }
 
 .page:last-child {
     page-break-after: avoid;
+}
+
+/* Overflow protection */
+.content-table tr {
+    page-break-inside: avoid;
+}
+
+.strategy-box {
+    page-break-inside: avoid;
+}
+
+.question-block {
+    page-break-inside: avoid;
+}
+
+/* Orphan/widow control */
+p, li, .content {
+    orphans: 2;
+    widows: 2;
+}
+
+/* Static footer - fixed at bottom of every page */
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 2cm;
+    border-top: 1px solid #ED1C24;
+    display: flex;
+    align-items: center;
+    font-size: 8pt;
+    color: #666;
+}
+
+.footer-logo {
+    height: 24px;
+    width: auto;
+}
+
+.footer-tagline {
+    flex: 1;
+    text-align: center;
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+
+.footer-brand {
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
 }
 
 /* Header */
@@ -224,30 +274,4 @@ body {
     line-height: 1.6;
 }
 
-/* Page footer */
-.page-footer {
-    margin-top: 40px;
-    padding-top: 12px;
-    border-top: 1px solid #ED1C24;
-    display: flex;
-    align-items: center;
-    font-size: 8pt;
-    color: #666;
-}
 
-.footer-logo {
-    height: 24px;
-    width: auto;
-}
-
-.footer-tagline {
-    flex: 1;
-    text-align: center;
-    font-style: normal;
-    letter-spacing: 0.05em;
-}
-
-.footer-page {
-    text-align: right;
-    letter-spacing: 0.05em;
-}
