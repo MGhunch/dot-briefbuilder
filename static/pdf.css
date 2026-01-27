@@ -37,11 +37,10 @@ body {
 
 /* Job anchor - the big title under logo */
 .job-anchor {
-    font-size: 16pt;
-    font-weight: 700;
+    font-size: 14pt;
+    font-weight: 600;
     color: #333;
-    margin: 12px 0 20px 0;
-    letter-spacing: 0.02em;
+    margin: 10px 0 16px 0;
 }
 
 .job-anchor .job-number {
@@ -126,43 +125,29 @@ body {
     margin-top: 3px;
 }
 
-/* Hunch box */
-.hunch-box {
-    background: #fef2f2;
-    border: 2px solid #ED1C24;
-    border-radius: 6px;
-    padding: 15px;
-    margin: 15px 0;
-}
-
-.hunch-label {
-    font-size: 9pt;
-    font-weight: 600;
-    color: #ED1C24;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 6px;
+/* Strategy section - OUR HUNCH box */
+.strategy-box {
+    background: #f9f9f9;
+    border-left: 4px solid #ED1C24;
+    padding: 16px 20px;
+    margin-bottom: 8px;
 }
 
 .hunch-content {
-    font-size: 12pt;
+    font-size: 10pt;
     font-style: italic;
     color: #333;
-}
-
-/* GET TO BY box */
-.gtb-box {
-    background: #58595B;
-    border-radius: 6px;
-    padding: 18px 20px;
-    margin: 15px 0;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ddd;
 }
 
 .gtb-row {
     display: flex;
     align-items: baseline;
     gap: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .gtb-row:last-child {
@@ -170,17 +155,27 @@ body {
 }
 
 .gtb-label {
-    font-size: 12pt;
+    font-size: 10pt;
     font-weight: 700;
     color: #ED1C24;
-    width: 40px;
+    width: 36px;
     flex-shrink: 0;
-    letter-spacing: 0.05em;
 }
 
 .gtb-content {
-    font-size: 12pt;
-    color: white;
+    font-size: 10pt;
+    color: #333;
+    line-height: 1.5;
+}
+
+.thinking-link {
+    font-size: 9pt;
+    color: #666;
+    font-style: italic;
+}
+
+.thinking-link .page-icon {
+    margin-right: 4px;
 }
 
 /* Springboard specific */
