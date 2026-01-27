@@ -11,7 +11,9 @@
             <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
         </div>
         
-        <h1 class="job-title">{{ brief.meta.jobName }}</h1>
+        <div class="job-anchor">
+            <span class="job-number">{{ brief.meta.jobNumber or 'JOB XXX' }}</span> | {{ brief.meta.jobName or 'Job Name' }}
+        </div>
         
         <table class="meta-table">
             <tr>
@@ -23,7 +25,7 @@
                 <td class="meta-value">{{ brief.meta.hunchLead }}</td>
             </tr>
             <tr>
-                <td class="meta-label">Date/Version</td>
+                <td class="meta-label">Date / Version</td>
                 <td class="meta-value">{{ brief.meta.date }}</td>
             </tr>
         </table>
@@ -32,23 +34,23 @@
         
         <table class="content-table">
             <tr>
-                <td class="label">THE NEED<br><span class="label-hint">Why does this brief exist?</span></td>
+                <td class="label">The Need<span class="label-hint">Why does this<br>brief exist?</span></td>
                 <td class="content">{{ brief.topline.need | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">THE ASK<br><span class="label-hint">What have we been asked to do?</span></td>
+                <td class="label">The Ask<span class="label-hint">What have we been<br>asked to do?</span></td>
                 <td class="content">{{ brief.topline.ask | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">OBJECTIVES<br><span class="label-hint">What does success look like?</span></td>
+                <td class="label">Objectives<span class="label-hint">What does success<br>look like?</span></td>
                 <td class="content">{{ brief.topline.objectives | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">SCOPE<br><span class="label-hint">What's in? What's out? What channels?</span></td>
+                <td class="label">Scope<span class="label-hint">What's in? What's out?<br>What channels?</span></td>
                 <td class="content">{{ brief.topline.scope | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">KEY DATES<br><span class="label-hint">What needs to happen when?</span></td>
+                <td class="label">Key Dates<span class="label-hint">What needs to<br>happen when?</span></td>
                 <td class="content">{{ brief.topline.dates | replace('\n', '<br>') | safe }}</td>
             </tr>
         </table>
@@ -56,7 +58,7 @@
         <div class="section-header">The Strategy</div>
         
         <div class="hunch-box">
-            <div class="hunch-label">OUR HUNCH</div>
+            <div class="hunch-label">Our Hunch</div>
             <div class="hunch-content">{{ brief.strategy.hunch }}</div>
         </div>
         
@@ -82,29 +84,33 @@
             <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
         </div>
         
+        <div class="job-anchor">
+            <span class="job-number">{{ brief.meta.jobNumber or 'JOB XXX' }}</span> | {{ brief.meta.jobName or 'Job Name' }}
+        </div>
+        
         <div class="section-header">The Springboard</div>
         
         <table class="content-table springboard">
             <tr>
-                <td class="label">WHAT?<br><span class="label-hint">What's actually going on?</span></td>
+                <td class="label">What?<span class="label-hint">What's actually<br>going on?</span></td>
                 <td class="content">{{ brief.springboard.q1 | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">WHO?<br><span class="label-hint">Who do we need to convince?</span></td>
+                <td class="label">Who?<span class="label-hint">Who do we need<br>to convince?</span></td>
                 <td class="content">{{ brief.springboard.q2 | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">WHY?<br><span class="label-hint">Why will anyone care?</span></td>
+                <td class="label">Why?<span class="label-hint">Why will anyone<br>care?</span></td>
                 <td class="content">{{ brief.springboard.q3 | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">WHY NOT?<br><span class="label-hint">What's holding them back?</span></td>
+                <td class="label">Why Not?<span class="label-hint">What's holding<br>them back?</span></td>
                 <td class="content">{{ brief.springboard.q4 | replace('\n', '<br>') | safe }}</td>
             </tr>
         </table>
         
         <div class="hunch-box">
-            <div class="hunch-label">OUR HUNCH</div>
+            <div class="hunch-label">Our Hunch</div>
             <div class="hunch-content">{{ brief.strategy.hunch }}</div>
         </div>
         
@@ -130,36 +136,40 @@
             <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
         </div>
         
+        <div class="job-anchor">
+            <span class="job-number">{{ brief.meta.jobNumber or 'JOB XXX' }}</span> | {{ brief.meta.jobName or 'Job Name' }}
+        </div>
+        
         <div class="section-header">The Detail</div>
         
         <table class="content-table">
             {% if brief.settings.showProofPoints and brief.detail.proofPoints %}
             <tr>
-                <td class="label">PROOF POINTS</td>
+                <td class="label">Proof Points</td>
                 <td class="content">{{ brief.detail.proofPoints | replace('\n', '<br>') | safe }}</td>
             </tr>
             {% endif %}
             {% if brief.settings.showMandatories and brief.detail.mandatories %}
             <tr>
-                <td class="label">MANDATORIES</td>
+                <td class="label">Mandatories</td>
                 <td class="content">{{ brief.detail.mandatories | replace('\n', '<br>') | safe }}</td>
             </tr>
             {% endif %}
             {% if brief.settings.showQuestions and brief.detail.questions %}
             <tr>
-                <td class="label">QUESTIONS</td>
+                <td class="label">Questions</td>
                 <td class="content">{{ brief.detail.questions | replace('\n', '<br>') | safe }}</td>
             </tr>
             {% endif %}
             {% if brief.settings.showResearch and brief.detail.research %}
             <tr>
-                <td class="label">RESEARCH</td>
+                <td class="label">Research</td>
                 <td class="content">{{ brief.detail.research | replace('\n', '<br>') | safe }}</td>
             </tr>
             {% endif %}
             {% if brief.settings.showAppendix and brief.detail.appendix %}
             <tr>
-                <td class="label">APPENDIX</td>
+                <td class="label">Appendix</td>
                 <td class="content">{{ brief.detail.appendix | replace('\n', '<br>') | safe }}</td>
             </tr>
             {% endif %}
