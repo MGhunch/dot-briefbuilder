@@ -21,20 +21,20 @@ DEFAULT_BRIEF = {
         "need": "",       # Why does this brief exist?
         "ask": "",        # What have we been asked to do?
         "objectives": "", # What does success look like?
-        "scope": "",      # What's in? What's out? What channels?
+        "scope": "",      # What's in? What's out? Channels?
         "dates": ""       # What needs to happen when?
     },
     "springboard": {
-        "q1": "",  # What's actually going on?
-        "q2": "",  # Who do we need to convince?
-        "q3": "",  # Why will anyone care?
-        "q4": ""   # What's holding them back?
+        "q1": "",  # WHAT? The truth of it. What's the brief behind the brief?
+        "q2": "",  # WHO? The human. Not a customer. Not a segment – a real person.
+        "q3": "",  # WHY? The hook. What matters most to them?
+        "q4": ""   # WHY NOT? The friction. Why won't they buy it?
     },
     "strategy": {
-        "hunch": "",
-        "get": "",
-        "to": "",
-        "by": ""
+        "hunch": "",  # The strategic unlock (only on Page 2)
+        "get": "",    # Who are we trying to move?
+        "to": "",     # What do we want them to do?
+        "by": ""      # How will we make that happen?
     },
     "detail": {
         "proofPoints": "",
