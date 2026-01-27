@@ -62,7 +62,7 @@ body {
 .meta-label {
     background: #f9f9f9;
     font-weight: 500;
-    font-size: 8pt;
+    font-size: 10pt;
     color: #666;
     width: 120px;
     text-transform: uppercase;
@@ -82,7 +82,7 @@ body {
     font-size: 10pt;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin: 20px 0 12px 0;
+    margin: 20px 0 24px 0;
     border-radius: 3px;
 }
 
@@ -103,7 +103,7 @@ body {
     width: 120px;
     background: #f9f9f9;
     font-weight: 400;
-    font-size: 8pt;
+    font-size: 10pt;
     color: #ED1C24;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -116,7 +116,7 @@ body {
 
 .label-hint {
     font-weight: 400;
-    font-size: 6.5pt;
+    font-size: 9pt;
     color: #999;
     font-style: italic;
     text-transform: none;
@@ -146,7 +146,6 @@ body {
 .gtb-row {
     display: flex;
     align-items: baseline;
-    gap: 8px;
     margin-bottom: 8px;
 }
 
@@ -158,12 +157,15 @@ body {
     font-size: 10pt;
     font-weight: 700;
     color: #ED1C24;
+    width: 32px;
     flex-shrink: 0;
 }
 
 .gtb-chevron {
+    font-size: 12pt;
     color: #ED1C24;
-    margin-right: 8px;
+    margin-right: 12px;
+    flex-shrink: 0;
 }
 
 .gtb-content {
@@ -174,7 +176,7 @@ body {
 }
 
 .thinking-link {
-    margin-top: 16px;
+    margin-top: 20px;
     padding-top: 8px;
     font-size: 9pt;
     color: #666;
@@ -182,13 +184,14 @@ body {
 }
 
 .thinking-link .page-icon {
+    color: #ED1C24;
     margin-right: 6px;
 }
 
 /* Full-width question blocks (The Thinking page) */
 .question-block {
-    margin-bottom: 20px;
-    padding-bottom: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #eee;
 }
 
@@ -199,7 +202,7 @@ body {
 }
 
 .question-label {
-    font-size: 9pt;
+    font-size: 10pt;
     font-weight: 400;
     color: #ED1C24;
     text-transform: uppercase;
@@ -207,14 +210,42 @@ body {
 }
 
 .question-hint {
-    font-size: 8pt;
+    font-size: 9pt;
     color: #999;
     font-style: italic;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .question-answer {
     font-size: 10pt;
     color: #333;
     line-height: 1.6;
+}
+
+/* Page footer */
+.page-footer {
+    position: relative;
+    margin-top: 40px;
+    padding-top: 12px;
+    border-top: 1px solid #ED1C24;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: #666;
+}
+
+.footer-logo {
+    height: 24px;
+    width: auto;
+}
+
+.footer-tagline {
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+
+.footer-page {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
