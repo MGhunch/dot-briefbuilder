@@ -19,6 +19,8 @@ body {
 
 .page {
     page-break-after: always;
+    position: relative;
+    min-height: 100%;
 }
 
 .page:last-child {
@@ -222,11 +224,13 @@ body {
     line-height: 1.6;
 }
 
-/* Page footer */
+/* Page footer - anchored at bottom */
 .page-footer {
-    position: relative;
-    margin-top: 40px;
-    padding-top: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 2cm;
     border-top: 1px solid #ED1C24;
     display: flex;
     align-items: center;
