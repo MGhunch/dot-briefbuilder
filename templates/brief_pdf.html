@@ -46,7 +46,7 @@
                 <td class="content">{{ brief.topline.objectives | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
-                <td class="label">Scope<span class="label-hint">What's in? What's out?<br>What channels?</span></td>
+                <td class="label">Scope<span class="label-hint">What's in? What's out?<br>Channels?</span></td>
                 <td class="content">{{ brief.topline.scope | replace('\n', '<br>') | safe }}</td>
             </tr>
             <tr>
@@ -55,10 +55,9 @@
             </tr>
         </table>
         
-        <div class="section-header">Our Hunch</div>
+        <div class="section-header">In a Nutshell</div>
         
         <div class="strategy-box">
-            <div class="hunch-content">{{ brief.strategy.hunch }}</div>
             <div class="gtb-row">
                 <span class="gtb-label">GET</span>
                 <span class="gtb-chevron">›</span>
