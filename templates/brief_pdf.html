@@ -91,26 +91,31 @@
             <span class="job-number">{{ brief.meta.jobNumber or 'JOB XXX' }}</span> | {{ brief.meta.jobName or 'Job Name' }}
         </div>
         
-        <div class="section-header">The Springboard</div>
+        <div class="section-header">The Thinking</div>
         
-        <table class="content-table springboard">
-            <tr>
-                <td class="label">What?<span class="label-hint">What's actually<br>going on?</span></td>
-                <td class="content">{{ brief.springboard.q1 | replace('\n', '<br>') | safe }}</td>
-            </tr>
-            <tr>
-                <td class="label">Who?<span class="label-hint">Who do we need<br>to convince?</span></td>
-                <td class="content">{{ brief.springboard.q2 | replace('\n', '<br>') | safe }}</td>
-            </tr>
-            <tr>
-                <td class="label">Why?<span class="label-hint">Why will anyone<br>care?</span></td>
-                <td class="content">{{ brief.springboard.q3 | replace('\n', '<br>') | safe }}</td>
-            </tr>
-            <tr>
-                <td class="label">Why Not?<span class="label-hint">What's holding<br>them back?</span></td>
-                <td class="content">{{ brief.springboard.q4 | replace('\n', '<br>') | safe }}</td>
-            </tr>
-        </table>
+        <div class="question-block">
+            <div class="question-label">What?</div>
+            <div class="question-hint">The truth of it. What's the brief behind the brief?</div>
+            <div class="question-answer">{{ brief.springboard.q1 | replace('\n', '<br>') | safe }}</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question-label">Who?</div>
+            <div class="question-hint">The human. Not a customer. Not a segment – a real person.</div>
+            <div class="question-answer">{{ brief.springboard.q2 | replace('\n', '<br>') | safe }}</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question-label">Why?</div>
+            <div class="question-hint">The hook. What matters most to them?</div>
+            <div class="question-answer">{{ brief.springboard.q3 | replace('\n', '<br>') | safe }}</div>
+        </div>
+        
+        <div class="question-block">
+            <div class="question-label">Why Not?</div>
+            <div class="question-hint">The friction. Why won't they buy it?</div>
+            <div class="question-answer">{{ brief.springboard.q4 | replace('\n', '<br>') | safe }}</div>
+        </div>
         
         <div class="section-header">Our Hunch</div>
         
