@@ -41,7 +41,7 @@
                     <input type="text" id="jobName" placeholder="e.g. TOW 088 | 90-Day Pre Renewal" oninput="updateState()">
                 </div>
                 <div class="job-field">
-                    <label>Project Lead</label>
+                    <label>Project Owner</label>
                     <input type="text" id="projectLead" placeholder="e.g. Emma" oninput="updateState()">
                 </div>
                 <div class="job-field">
@@ -49,7 +49,7 @@
                     <input type="text" id="hunchLead" placeholder="e.g. Michael" oninput="updateState()">
                 </div>
                 <div class="job-field">
-                    <label>Date / Version</label>
+                    <label>Date/Version</label>
                     <input type="text" id="date" placeholder="e.g. 27 Jan – v1" oninput="updateState()">
                 </div>
             </div>
@@ -58,20 +58,24 @@
             
             <table class="topline-table">
                 <tr>
-                    <td>THE NEED</td>
-                    <td><textarea id="need" placeholder="What problem are we solving?" oninput="updateState()"></textarea></td>
+                    <td>THE NEED<div class="field-question">Why does this brief exist?</div></td>
+                    <td><textarea id="need" placeholder="" oninput="updateState()"></textarea></td>
                 </tr>
                 <tr>
-                    <td>OBJECTIVES</td>
-                    <td><textarea id="objectives" placeholder="What does success look like?" oninput="updateState()"></textarea></td>
+                    <td>THE ASK<div class="field-question">What have we been asked to do?</div></td>
+                    <td><textarea id="ask" placeholder="" oninput="updateState()"></textarea></td>
                 </tr>
                 <tr>
-                    <td>OUTPUTS</td>
-                    <td><textarea id="outputs" placeholder="What are we actually making?" oninput="updateState()"></textarea></td>
+                    <td>OBJECTIVES<div class="field-question">What does success look like?</div></td>
+                    <td><textarea id="objectives" placeholder="" oninput="updateState()"></textarea></td>
                 </tr>
                 <tr>
-                    <td>KEY DATES</td>
-                    <td><textarea id="dates" placeholder="When do things need to happen?" oninput="updateState()"></textarea></td>
+                    <td>SCOPE<div class="field-question">What's in? What's out? What channels?</div></td>
+                    <td><textarea id="scope" placeholder="" oninput="updateState()"></textarea></td>
+                </tr>
+                <tr>
+                    <td>KEY DATES<div class="field-question">What needs to happen when?</div></td>
+                    <td><textarea id="dates" placeholder="" oninput="updateState()"></textarea></td>
                 </tr>
             </table>
             
