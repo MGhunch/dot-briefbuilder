@@ -77,18 +77,20 @@
         </div>
         
         <div class="thinking-link">
-            <span class="page-icon">↪</span> How we got there...
+            <span class="page-icon">↪</span> How we got here...
+        </div>
+        
+        <div class="page-footer">
+            <img class="footer-logo" src="data:image/webp;base64,{{ ai2_logo_b64 }}" alt="ai²">
+            <span class="footer-tagline">agency intuition × artificial intelligence</span>
+            <span class="footer-page">1 / 3</span>
         </div>
     </div>
     
-    <!-- PAGE 2: THE SPRINGBOARD -->
+    <!-- PAGE 2: THE THINKING -->
     <div class="page">
         <div class="header">
             <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
-        </div>
-        
-        <div class="job-anchor">
-            <span class="job-number">{{ brief.meta.jobNumber or 'JOB XXX' }}</span> | {{ brief.meta.jobName or 'Job Name' }}
         </div>
         
         <div class="section-header">The Thinking</div>
@@ -137,16 +139,18 @@
                 <span class="gtb-content">{{ brief.strategy.by }}</span>
             </div>
         </div>
+        
+        <div class="page-footer">
+            <img class="footer-logo" src="data:image/webp;base64,{{ ai2_logo_b64 }}" alt="ai²">
+            <span class="footer-tagline">agency intuition × artificial intelligence</span>
+            <span class="footer-page">2 / 3</span>
+        </div>
     </div>
     
     <!-- PAGE 3: THE DETAIL -->
     <div class="page">
         <div class="header">
             <img class="logo-img" src="data:image/jpeg;base64,{{ logo_b64 }}" alt="Hunch Brief">
-        </div>
-        
-        <div class="job-anchor">
-            <span class="job-number">{{ brief.meta.jobNumber or 'JOB XXX' }}</span> | {{ brief.meta.jobName or 'Job Name' }}
         </div>
         
         <div class="section-header">The Detail</div>
@@ -183,6 +187,12 @@
             </tr>
             {% endif %}
         </table>
+        
+        <div class="page-footer">
+            <img class="footer-logo" src="data:image/webp;base64,{{ ai2_logo_b64 }}" alt="ai²">
+            <span class="footer-tagline">agency intuition × artificial intelligence</span>
+            <span class="footer-page">3 / 3</span>
+        </div>
     </div>
 </body>
 </html>
