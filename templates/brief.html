@@ -12,12 +12,12 @@
 <body>
     <div class="container">
         <div class="tabs">
-            <button class="tab active" onclick="showPage(1)">Page 1: The Brief</button>
-            <button class="tab" onclick="showPage(2)">Page 2: The Springboard</button>
-            <button class="tab" onclick="showPage(3)">Page 3: The Detail</button>
+            <button class="tab active" onclick="showPage(1)">THE TOPLINE</button>
+            <button class="tab" onclick="showPage(2)">THE THINKING</button>
+            <button class="tab" onclick="showPage(3)">THE DETAIL</button>
         </div>
         
-        <!-- PAGE 1: THE BRIEF -->
+        <!-- PAGE 1: THE TOPLINE -->
         <div class="page active" id="page1">
             <div class="version-bar">
                 <div class="version-info">
@@ -70,7 +70,7 @@
                     <td><textarea id="objectives" placeholder="" oninput="updateState()"></textarea></td>
                 </tr>
                 <tr>
-                    <td>SCOPE<div class="field-question">What's in? What's out? What channels?</div></td>
+                    <td>SCOPE<div class="field-question">What's in? What's out? Channels?</div></td>
                     <td><textarea id="scope" placeholder="" oninput="updateState()"></textarea></td>
                 </tr>
                 <tr>
@@ -79,12 +79,7 @@
                 </tr>
             </table>
             
-            <div class="section-header">The Strategy</div>
-            
-            <div class="hunch-box">
-                <div class="hunch-label">Our Hunch</div>
-                <input type="text" class="hunch-input" id="hunch" placeholder="The strategic unlock..." oninput="syncStrategy('hunch')">
-            </div>
+            <div class="section-header">In a Nutshell</div>
             
             <div class="gtb-container">
                 <div class="gtb-row">
@@ -100,11 +95,9 @@
                     <input type="text" class="gtb-input" id="by" placeholder="How will we make that happen?" oninput="syncStrategy('by')">
                 </div>
             </div>
-            
-            <div class="sync-note">↕ Strategy syncs with Page 2</div>
         </div>
         
-        <!-- PAGE 2: THE SPRINGBOARD -->
+        <!-- PAGE 2: THE THINKING -->
         <div class="page" id="page2">
             <div class="version-bar">
                 <div class="version-info">
@@ -122,36 +115,37 @@
                 <img src="/static/images/header-brief.png" alt="Hunch Brief">
             </div>
             
-            <div class="section-header">The Springboard</div>
-            <p class="section-intro">Four questions that earn the strategy.</p>
+            <div class="section-header">The Thinking</div>
+            <p class="section-intro">Four questions. One hunch.</p>
             
             <div class="question-block">
-                <div class="question-label">1. What's actually going on?</div>
-                <div class="question-hint">The business context. Why are we even talking about this?</div>
-                <textarea class="question-input" id="q1" placeholder="The situation..." oninput="updateState()"></textarea>
+                <div class="question-label">WHAT?</div>
+                <div class="question-hint">The truth of it. What's the brief behind the brief?</div>
+                <textarea class="question-input" id="q1" placeholder="" oninput="updateState()"></textarea>
             </div>
             
             <div class="question-block">
-                <div class="question-label">2. Who do we need to convince?</div>
-                <div class="question-hint">The human. Be specific – not a segment, a real person.</div>
-                <textarea class="question-input" id="q2" placeholder="The audience..." oninput="updateState()"></textarea>
+                <div class="question-label">WHO?</div>
+                <div class="question-hint">The human. Not a customer. Not a segment – a real person.</div>
+                <textarea class="question-input" id="q2" placeholder="" oninput="updateState()"></textarea>
             </div>
             
             <div class="question-block">
-                <div class="question-label">3. Why will anyone care?</div>
-                <div class="question-hint">The motivation. What does our human actually care about?</div>
-                <textarea class="question-input" id="q3" placeholder="The hook..." oninput="updateState()"></textarea>
+                <div class="question-label">WHY?</div>
+                <div class="question-hint">The hook. What matters most to them?</div>
+                <textarea class="question-input" id="q3" placeholder="" oninput="updateState()"></textarea>
             </div>
             
             <div class="question-block">
-                <div class="question-label">4. What's holding them back?</div>
-                <div class="question-hint">The friction. Inertia, scepticism, apathy, alternatives.</div>
-                <textarea class="question-input" id="q4" placeholder="The barriers..." oninput="updateState()"></textarea>
+                <div class="question-label">WHY NOT?</div>
+                <div class="question-hint">The friction. Why won't they buy it?</div>
+                <textarea class="question-input" id="q4" placeholder="" oninput="updateState()"></textarea>
             </div>
+            
+            <div class="section-header">Our Hunch</div>
             
             <div class="hunch-box">
-                <div class="hunch-label">Our Hunch</div>
-                <input type="text" class="hunch-input" id="hunch2" placeholder="The strategic unlock that emerges..." oninput="syncStrategy('hunch2')">
+                <textarea class="hunch-input" id="hunch" placeholder="The strategic unlock..." oninput="updateState()"></textarea>
             </div>
             
             <div class="gtb-container">
@@ -169,7 +163,7 @@
                 </div>
             </div>
             
-            <div class="sync-note">↕ Strategy syncs with Page 1</div>
+            <div class="sync-note">↕ GET/TO/BY syncs with The Topline</div>
         </div>
         
         <!-- PAGE 3: THE DETAIL -->
