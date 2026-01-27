@@ -15,10 +15,10 @@ let briefState = {
         dates: ""
     },
     springboard: {
-        q1: "",
-        q2: "",
-        q3: "",
-        q4: ""
+        q1: "",  // WHAT? The truth of it. What's the brief behind the brief?
+        q2: "",  // WHO? The human. Not a customer. Not a segment – a real person.
+        q3: "",  // WHY? The hook. What matters most to them?
+        q4: ""   // WHY NOT? The friction. Why won't they buy it?
     },
     strategy: {
         hunch: "",
@@ -89,13 +89,13 @@ function updateState() {
     briefState.topline.scope = document.getElementById('scope').value;
     briefState.topline.dates = document.getElementById('dates').value;
     
-    // Springboard
+    // Springboard (The Thinking)
     briefState.springboard.q1 = document.getElementById('q1').value;
     briefState.springboard.q2 = document.getElementById('q2').value;
     briefState.springboard.q3 = document.getElementById('q3').value;
     briefState.springboard.q4 = document.getElementById('q4').value;
     
-    // Strategy (already synced)
+    // Strategy - hunch only on Page 2, GET/TO/BY synced
     briefState.strategy.hunch = document.getElementById('hunch').value;
     briefState.strategy.get = document.getElementById('get').value;
     briefState.strategy.to = document.getElementById('to').value;
@@ -119,15 +119,11 @@ function updateState() {
     setStatus('Unsaved changes');
 }
 
-// Sync strategy fields between pages
+// Sync GET/TO/BY fields between pages (hunch only lives on Page 2)
 function syncStrategy(sourceId) {
     const value = document.getElementById(sourceId).value;
     
-    if (sourceId === 'hunch' || sourceId === 'hunch2') {
-        document.getElementById('hunch').value = value;
-        document.getElementById('hunch2').value = value;
-        briefState.strategy.hunch = value;
-    } else if (sourceId === 'get' || sourceId === 'get2') {
+    if (sourceId === 'get' || sourceId === 'get2') {
         document.getElementById('get').value = value;
         document.getElementById('get2').value = value;
         briefState.strategy.get = value;
@@ -211,15 +207,14 @@ function populateForm() {
     document.getElementById('scope').value = briefState.topline.scope || '';
     document.getElementById('dates').value = briefState.topline.dates || '';
     
-    // Springboard
+    // Springboard (The Thinking)
     document.getElementById('q1').value = briefState.springboard.q1 || '';
     document.getElementById('q2').value = briefState.springboard.q2 || '';
     document.getElementById('q3').value = briefState.springboard.q3 || '';
     document.getElementById('q4').value = briefState.springboard.q4 || '';
     
-    // Strategy (both pages)
+    // Strategy - hunch only on Page 2, GET/TO/BY on both pages
     document.getElementById('hunch').value = briefState.strategy.hunch || '';
-    document.getElementById('hunch2').value = briefState.strategy.hunch || '';
     document.getElementById('get').value = briefState.strategy.get || '';
     document.getElementById('get2').value = briefState.strategy.get || '';
     document.getElementById('to').value = briefState.strategy.to || '';
