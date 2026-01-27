@@ -185,7 +185,36 @@ body {
     margin-right: 6px;
 }
 
-/* Springboard specific */
-.springboard .label {
-    width: 120px;
+/* Full-width question blocks (The Thinking page) */
+.question-block {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.question-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.question-label {
+    font-size: 9pt;
+    font-weight: 400;
+    color: #ED1C24;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.question-hint {
+    font-size: 8pt;
+    color: #999;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.question-answer {
+    font-size: 10pt;
+    color: #333;
+    line-height: 1.6;
 }
