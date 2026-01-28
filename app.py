@@ -11,6 +11,7 @@ app = Flask(__name__)
 # Default empty brief structure
 DEFAULT_BRIEF = {
     "meta": {
+        "jobNumber": "",
         "jobName": "",
         "projectLead": "",
         "hunchLead": "",
@@ -18,23 +19,23 @@ DEFAULT_BRIEF = {
         "version": 1
     },
     "topline": {
-        "need": "",       # Why does this brief exist?
-        "ask": "",        # What have we been asked to do?
-        "objectives": "", # What does success look like?
-        "scope": "",      # What's in? What's out? Channels?
-        "dates": ""       # What needs to happen when?
+        "need": "",
+        "ask": "",
+        "objectives": "",
+        "scope": "",
+        "dates": ""
     },
     "springboard": {
-        "q1": "",  # WHAT? The truth of it. What's the brief behind the brief?
-        "q2": "",  # WHO? The human. Not a customer. Not a segment – a real person.
-        "q3": "",  # WHY? The hook. What matters most to them?
-        "q4": ""   # WHY NOT? The friction. Why won't they buy it?
+        "q1": "",
+        "q2": "",
+        "q3": "",
+        "q4": ""
     },
     "strategy": {
-        "hunch": "",  # The strategic unlock (only on Page 2)
-        "get": "",    # Who are we trying to move?
-        "to": "",     # What do we want them to do?
-        "by": ""      # How will we make that happen?
+        "hunch": "",
+        "get": "",
+        "to": "",
+        "by": ""
     },
     "detail": {
         "proofPoints": "",
@@ -89,8 +90,18 @@ def generate_pdf():
     )
     
     # Create filename from job name
+    job_number = data.get('meta', {}).get('jobNumber', '')
     job_name = data.get('meta', {}).get('jobName', 'brief')
-    safe_name = "".join(c for c in job_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
+    
+    # Build filename: "TOW 089 - Brand Campaign.pdf" or just "brief.pdf"
+    if job_number and job_name:
+        safe_name = f"{job_number} - {job_name}"
+    elif job_name:
+        safe_name = job_name
+    else:
+        safe_name = "brief"
+    
+    safe_name = "".join(c for c in safe_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
     filename = f"{safe_name or 'brief'}.pdf"
     
     # Return PDF
@@ -104,6 +115,24 @@ def generate_pdf():
         as_attachment=True,
         download_name=filename
     )
+
+
+@app.route('/api/chat', methods=['POST'])
+def chat_with_dot():
+    """Chat endpoint for Dot AI assistance - placeholder for now"""
+    data = request.get_json()
+    section_id = data.get('sectionId', '')
+    message = data.get('message', '')
+    context = data.get('context', {})
+    
+    # TODO: Wire up to Claude API
+    # For now, return a placeholder response
+    response = f"I'm looking at the {section_id} section. Let me help you think through this... (Dot API integration coming soon)"
+    
+    return jsonify({
+        "response": response,
+        "sectionId": section_id
+    })
 
 
 @app.route('/health')
