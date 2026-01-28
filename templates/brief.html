@@ -3,265 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hunch Brief Builder</title>
+    <title>Brief Builder – Dot Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="tabs">
-            <button class="tab active" onclick="showPage(1)">THE TOPLINE</button>
-            <button class="tab" onclick="showPage(2)">THE THINKING</button>
-            <button class="tab" onclick="showPage(3)">THE DETAIL</button>
+    <header class="header">
+        <div class="header-left">
+            <div class="logo" onclick="showView('entry')">
+                <div class="logo-mark">h</div>
+                <span>DOT HUB</span>
+            </div>
+            <nav class="nav">
+                <button class="nav-tab">Ask Dot</button>
+                <button class="nav-tab">WIP</button>
+                <button class="nav-tab">Tracker</button>
+                <button class="nav-tab active">Brief</button>
+            </nav>
         </div>
-        
-        <!-- PAGE 1: THE TOPLINE -->
-        <div class="page active" id="page1">
-            <div class="version-bar">
-                <div class="version-info">
-                    <span class="version-badge" id="versionBadge">v1</span>
-                    <span id="versionStatus">Draft</span>
-                </div>
-                <div class="version-actions">
-                    <button class="version-btn" onclick="loadFromJson()">Load JSON</button>
-                    <button class="version-btn" onclick="copyJson()">Copy JSON</button>
-                    <button class="version-btn primary" onclick="exportPdf()">Export PDF</button>
-                </div>
+        <div class="header-right" id="headerRight" style="display: none;">
+            <div class="save-status" id="saveStatus">
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                Saved
             </div>
-            
-            <div class="logo">
-                <img src="/static/images/header-brief.png" alt="Hunch Brief">
-            </div>
-            
-            <div class="job-info">
-                <div class="job-field">
-                    <label>Job Name</label>
-                    <input type="text" id="jobName" placeholder="e.g. TOW 088 | 90-Day Pre Renewal" oninput="updateState()">
-                </div>
-                <div class="job-field">
-                    <label>Project Owner</label>
-                    <input type="text" id="projectLead" placeholder="e.g. Emma" oninput="updateState()">
-                </div>
-                <div class="job-field">
-                    <label>Hunch Lead</label>
-                    <input type="text" id="hunchLead" placeholder="e.g. Michael" oninput="updateState()">
-                </div>
-                <div class="job-field">
-                    <label>Date/Version</label>
-                    <input type="text" id="date" placeholder="e.g. 27 Jan – v1" oninput="updateState()">
-                </div>
-            </div>
-            
-            <div class="section-header">The Topline</div>
-            
-            <table class="topline-table">
-                <tr>
-                    <td>THE NEED<div class="field-question">Why does this brief exist?</div></td>
-                    <td><textarea id="need" placeholder="" oninput="updateState()"></textarea></td>
-                </tr>
-                <tr>
-                    <td>THE ASK<div class="field-question">What have we been asked to do?</div></td>
-                    <td><textarea id="ask" placeholder="" oninput="updateState()"></textarea></td>
-                </tr>
-                <tr>
-                    <td>OBJECTIVES<div class="field-question">What does success look like?</div></td>
-                    <td><textarea id="objectives" placeholder="" oninput="updateState()"></textarea></td>
-                </tr>
-                <tr>
-                    <td>SCOPE<div class="field-question">What's in? What's out? Channels?</div></td>
-                    <td><textarea id="scope" placeholder="" oninput="updateState()"></textarea></td>
-                </tr>
-                <tr>
-                    <td>KEY DATES<div class="field-question">What needs to happen when?</div></td>
-                    <td><textarea id="dates" placeholder="" oninput="updateState()"></textarea></td>
-                </tr>
-            </table>
-            
-            <div class="section-header">In a Nutshell</div>
-            
-            <div class="gtb-container">
-                <div class="gtb-row">
-                    <span class="gtb-label">GET</span>
-                    <input type="text" class="gtb-input" id="get" placeholder="Who are we trying to move?" oninput="syncStrategy('get')">
-                </div>
-                <div class="gtb-row">
-                    <span class="gtb-label">TO</span>
-                    <input type="text" class="gtb-input" id="to" placeholder="What do we want them to do?" oninput="syncStrategy('to')">
-                </div>
-                <div class="gtb-row">
-                    <span class="gtb-label">BY</span>
-                    <input type="text" class="gtb-input" id="by" placeholder="How will we make that happen?" oninput="syncStrategy('by')">
-                </div>
-            </div>
+            <button class="btn-pdf" onclick="exportPdf()">
+                <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                GET PDF
+            </button>
         </div>
-        
-        <!-- PAGE 2: THE THINKING -->
-        <div class="page" id="page2">
-            <div class="version-bar">
-                <div class="version-info">
-                    <span class="version-badge" id="versionBadge2">v1</span>
-                    <span id="versionStatus2">Draft</span>
+    </header>
+    
+    <!-- ==================== -->
+    <!-- ENTRY VIEW           -->
+    <!-- ==================== -->
+    <div class="view active" id="viewEntry">
+        <div class="entry-view">
+            <div class="entry-header">
+                <div class="entry-logo">
+                    <div class="entry-logo-mark">h</div>
+                    <div class="entry-logo-text">BRIEF</div>
                 </div>
-                <div class="version-actions">
-                    <button class="version-btn" onclick="loadFromJson()">Load JSON</button>
-                    <button class="version-btn" onclick="copyJson()">Copy JSON</button>
-                    <button class="version-btn primary" onclick="exportPdf()">Export PDF</button>
-                </div>
+                <p class="entry-intro">Catch all the detail and dig for insights with Dot.</p>
             </div>
             
-            <div class="logo">
-                <img src="/static/images/header-brief.png" alt="Hunch Brief">
-            </div>
-            
-            <div class="section-header">The Thinking</div>
-            <p class="section-intro">Four questions. One hunch.</p>
-            
-            <div class="question-block">
-                <div class="question-label">WHAT?</div>
-                <div class="question-hint">The truth of it. What's the brief behind the brief?</div>
-                <textarea class="question-input" id="q1" placeholder="" oninput="updateState()"></textarea>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-label">WHO?</div>
-                <div class="question-hint">The human. Not a customer. Not a segment – a real person.</div>
-                <textarea class="question-input" id="q2" placeholder="" oninput="updateState()"></textarea>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-label">WHY?</div>
-                <div class="question-hint">The hook. What matters most to them?</div>
-                <textarea class="question-input" id="q3" placeholder="" oninput="updateState()"></textarea>
-            </div>
-            
-            <div class="question-block">
-                <div class="question-label">WHY NOT?</div>
-                <div class="question-hint">The friction. Why won't they buy it?</div>
-                <textarea class="question-input" id="q4" placeholder="" oninput="updateState()"></textarea>
-            </div>
-            
-            <div class="section-header">Our Hunch</div>
-            
-            <div class="hunch-box">
-                <textarea class="hunch-input" id="hunch" placeholder="The strategic unlock..." oninput="updateState()"></textarea>
-            </div>
-            
-            <div class="gtb-container">
-                <div class="gtb-row">
-                    <span class="gtb-label">GET</span>
-                    <input type="text" class="gtb-input" id="get2" placeholder="Who are we trying to move?" oninput="syncStrategy('get2')">
-                </div>
-                <div class="gtb-row">
-                    <span class="gtb-label">TO</span>
-                    <input type="text" class="gtb-input" id="to2" placeholder="What do we want them to do?" oninput="syncStrategy('to2')">
-                </div>
-                <div class="gtb-row">
-                    <span class="gtb-label">BY</span>
-                    <input type="text" class="gtb-input" id="by2" placeholder="How will we make that happen?" oninput="syncStrategy('by2')">
-                </div>
-            </div>
-            
-            <div class="sync-note">↕ GET/TO/BY syncs with The Topline</div>
-        </div>
-        
-        <!-- PAGE 3: THE DETAIL -->
-        <div class="page" id="page3">
-            <div class="version-bar">
-                <div class="version-info">
-                    <span class="version-badge" id="versionBadge3">v1</span>
-                    <span id="versionStatus3">Draft</span>
-                </div>
-                <div class="version-actions">
-                    <button class="version-btn" onclick="loadFromJson()">Load JSON</button>
-                    <button class="version-btn" onclick="copyJson()">Copy JSON</button>
-                    <button class="version-btn primary" onclick="exportPdf()">Export PDF</button>
-                </div>
-            </div>
-            
-            <div class="logo">
-                <img src="/static/images/header-brief.png" alt="Hunch Brief">
-            </div>
-            
-            <div class="section-header">The Detail</div>
-            
-            <div class="detail-controls">
-                <span class="detail-controls-label">Sections:</span>
-                <label class="toggle-label">
-                    <input type="checkbox" id="toggleProofPoints" checked onchange="toggleSection('proofPointsSection')"> Proof Points
-                </label>
-                <label class="toggle-label">
-                    <input type="checkbox" id="toggleMandatories" checked onchange="toggleSection('mandatoriesSection')"> Mandatories
-                </label>
-                <label class="toggle-label">
-                    <input type="checkbox" id="toggleQuestions" checked onchange="toggleSection('questionsSection')"> Questions
-                </label>
-                <label class="toggle-label">
-                    <input type="checkbox" id="toggleResearch" onchange="toggleSection('researchSection')"> Research
-                </label>
-                <label class="toggle-label">
-                    <input type="checkbox" id="toggleAppendix" onchange="toggleSection('appendixSection')"> Appendix
-                </label>
-                <button class="add-custom-btn" onclick="addCustomSection()">+ Custom</button>
-            </div>
-            
-            <div id="detailSections">
-                <div class="detail-section" id="proofPointsSection">
-                    <div class="detail-section-header">
-                        <span>Proof Points</span>
+            <div class="entry-cards">
+                <div class="entry-card">
+                    <div class="entry-card-title">Choose a job</div>
+                    <div class="form-field">
+                        <select class="form-select" id="selectClient" onchange="updateJobs()">
+                            <option value="">Client</option>
+                            <option value="tow">Tower Insurance</option>
+                            <option value="onz">One NZ</option>
+                            <option value="sky">Sky</option>
+                            <option value="ff">Fisher Funds</option>
+                        </select>
                     </div>
-                    <textarea id="proofPoints" class="detail-textarea" placeholder="Product and brand evidence..." oninput="updateState()"></textarea>
+                    <div class="form-field">
+                        <select class="form-select" id="selectJob" disabled>
+                            <option value="">Job</option>
+                        </select>
+                    </div>
+                    <a class="new-job-link" onclick="openNewJobModal()">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Set up a new job
+                    </a>
                 </div>
                 
-                <div class="detail-section" id="mandatoriesSection">
-                    <div class="detail-section-header">
-                        <span>Mandatories</span>
+                <div class="entry-card">
+                    <div class="entry-card-title">Add your inputs</div>
+                    <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                        <div class="drop-zone-icon">
+                            <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <div class="drop-zone-text">Drop files here or <strong>click to upload</strong></div>
+                        <div class="drop-zone-hint">PDF, Word, PowerPoint, images</div>
                     </div>
-                    <textarea id="mandatories" class="detail-textarea" placeholder="Non-negotiables and constraints..." oninput="updateState()"></textarea>
-                </div>
-                
-                <div class="detail-section" id="questionsSection">
-                    <div class="detail-section-header">
-                        <span>Questions</span>
-                    </div>
-                    <textarea id="questions" class="detail-textarea" placeholder="What's still unclear?" oninput="updateState()"></textarea>
-                </div>
-                
-                <div class="detail-section hidden" id="researchSection">
-                    <div class="detail-section-header">
-                        <span>Research</span>
-                    </div>
-                    <textarea id="research" class="detail-textarea" placeholder="Background research and findings..." oninput="updateState()"></textarea>
-                </div>
-                
-                <div class="detail-section hidden" id="appendixSection">
-                    <div class="detail-section-header">
-                        <span>Appendix</span>
-                    </div>
-                    <textarea id="appendix" class="detail-textarea" placeholder="Additional reference material..." oninput="updateState()"></textarea>
+                    <div class="uploaded-files" id="uploadedFiles"></div>
+                    <input type="file" id="fileInput" class="file-input" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.png,.jpg,.jpeg" onchange="handleFiles(event)">
                 </div>
             </div>
             
-            <div id="customSections"></div>
+            <div class="ready-box">
+                <div class="ready-box-title">Ready</div>
+                <div class="ready-list" id="readyList">
+                    <div class="ready-empty">Select a job to get started</div>
+                </div>
+                <div class="ready-box-footer">
+                    <button class="btn-go" id="btnGo" onclick="startBuilder()" disabled>LET'S GO</button>
+                </div>
+            </div>
+            
+            <div class="recent-section">
+                <div class="recent-title">Recent briefs</div>
+                <div class="recent-list" id="recentBriefsList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
         </div>
     </div>
     
-    <!-- JSON Modal -->
-    <div class="modal" id="jsonModal">
-        <div class="modal-content">
+    <!-- ==================== -->
+    <!-- BRIEF BUILDER VIEW   -->
+    <!-- ==================== -->
+    <div class="view" id="viewBuilder">
+        <div class="meta-bar" id="metaBar">
+            <div class="meta-inner">
+                <div class="meta-info">
+                    <span class="meta-job" id="metaJobNumber">TOW 089</span>
+                    <span class="meta-name" id="metaJobName">Brand Refresh Campaign</span>
+                </div>
+                <div class="meta-actions">
+                    <button class="meta-btn" onclick="openMetaModal()" title="Edit details">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                    </button>
+                    <button class="meta-btn" onclick="toggleMeta()" title="Collapse">
+                        <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <button class="meta-toggle" id="metaToggle" onclick="toggleMeta()">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            <span id="metaToggleText">TOW 089 – Brand Refresh Campaign</span>
+        </button>
+        
+        <main class="main">
+            <div class="progress">
+                <div class="progress-step active" id="progressTopline" onclick="showPage('topline')">
+                    <div class="progress-dot"></div>
+                    TOPLINE
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" id="progressThinking" onclick="showPage('thinking')">
+                    <div class="progress-dot"></div>
+                    THINKING
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" id="progressNutshell" onclick="showPage('nutshell')">
+                    <div class="progress-dot"></div>
+                    NUTSHELL
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" id="progressDetail" onclick="showPage('detail')">
+                    <div class="progress-dot"></div>
+                    DETAIL
+                </div>
+            </div>
+            
+            <div class="page active" id="pageTopline">
+                <h1 class="page-title">What's the job?</h1>
+                <div id="sectionsTopline"></div>
+                <div class="page-nav">
+                    <div></div>
+                    <button class="btn-nav" onclick="showPage('thinking')">THINKING <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+            </div>
+            
+            <div class="page" id="pageThinking">
+                <h1 class="page-title">Four questions. One hunch.</h1>
+                <div id="sectionsThinking"></div>
+                <div class="page-nav">
+                    <button class="btn-nav" onclick="showPage('topline')"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> TOPLINE</button>
+                    <button class="btn-nav" onclick="showPage('nutshell')">NUTSHELL <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+            </div>
+            
+            <div class="page" id="pageNutshell">
+                <h1 class="page-title">The guts of it.</h1>
+                <div id="sectionsNutshell"></div>
+                <div class="page-nav">
+                    <button class="btn-nav" onclick="showPage('thinking')"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> THINKING</button>
+                    <button class="btn-nav" onclick="showPage('detail')">DETAIL <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+                </div>
+            </div>
+            
+            <div class="page" id="pageDetail">
+                <h1 class="page-title">The supporting evidence.</h1>
+                <div class="detail-toggles">
+                    <label class="detail-toggle">
+                        <input type="checkbox" id="toggleProofPoints" onchange="toggleDetailSection('proofPoints')">
+                        <span class="detail-toggle-box"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Proof Points
+                    </label>
+                    <label class="detail-toggle always-on">
+                        <input type="checkbox" checked disabled>
+                        <span class="detail-toggle-box"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Mandatories
+                    </label>
+                    <label class="detail-toggle always-on">
+                        <input type="checkbox" checked disabled>
+                        <span class="detail-toggle-box"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Questions
+                    </label>
+                    <label class="detail-toggle">
+                        <input type="checkbox" id="toggleResearch" onchange="toggleDetailSection('research')">
+                        <span class="detail-toggle-box"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Research
+                    </label>
+                    <label class="detail-toggle">
+                        <input type="checkbox" id="toggleAppendix" onchange="toggleDetailSection('appendix')">
+                        <span class="detail-toggle-box"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        Appendix
+                    </label>
+                </div>
+                <div id="sectionsDetail"></div>
+                <div class="page-nav">
+                    <button class="btn-nav" onclick="showPage('nutshell')"><svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> NUTSHELL</button>
+                    <button class="btn-nav primary" onclick="exportPdf()">GET PDF <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- New Job Modal -->
+    <div class="modal-overlay" id="newJobModal" onclick="closeNewJobModal()">
+        <div class="modal" onclick="event.stopPropagation()">
             <div class="modal-header">
-                <h3>Load Brief from JSON</h3>
-                <button class="modal-close" onclick="closeModal()">×</button>
+                <h3 class="modal-title">Set up a new job</h3>
+                <button class="modal-close" onclick="closeNewJobModal()">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
             </div>
-            <textarea id="jsonInput" placeholder="Paste JSON here..."></textarea>
-            <div class="modal-actions">
-                <button class="version-btn" onclick="closeModal()">Cancel</button>
-                <button class="version-btn primary" onclick="applyJson()">Load</button>
+            <div class="form-group">
+                <label class="form-label">Client</label>
+                <select class="form-select" id="newJobClient">
+                    <option value="">Select client</option>
+                    <option value="tow">Tower Insurance</option>
+                    <option value="onz">One NZ</option>
+                    <option value="sky">Sky</option>
+                    <option value="ff">Fisher Funds</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Job Number</label>
+                <input type="text" class="form-input" id="newJobNumber" placeholder="e.g. TOW 090">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Job Name</label>
+                <input type="text" class="form-input" id="newJobName" placeholder="e.g. Summer Campaign">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Project Owner</label>
+                <input type="text" class="form-input" id="newJobOwner" placeholder="e.g. Emma">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-done" onclick="createNewJob()">Create Job</button>
             </div>
         </div>
     </div>
     
+    <!-- Meta Modal -->
+    <div class="modal-overlay" id="metaModal" onclick="closeMetaModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Job Details</h3>
+                <button class="modal-close" onclick="closeMetaModal()">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Job Number</label>
+                <input type="text" class="form-input" id="inputJobNumber" value="">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Job Name</label>
+                <input type="text" class="form-input" id="inputJobName" value="">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Project Owner</label>
+                <input type="text" class="form-input" id="inputProjectOwner" value="">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Hunch Lead</label>
+                <input type="text" class="form-input" id="inputHunchLead" value="">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Date / Version</label>
+                <input type="text" class="form-input" id="inputDate" value="">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-done" onclick="saveMeta()">Done</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JSON Modal (for debugging/import) -->
+    <div class="modal-overlay" id="jsonModal" onclick="closeJsonModal()">
+        <div class="modal modal-wide" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Import/Export JSON</h3>
+                <button class="modal-close" onclick="closeJsonModal()">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <textarea id="jsonInput" class="json-textarea" placeholder="Paste JSON here..."></textarea>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="copyJson()">Copy JSON</button>
+                <button class="btn-done" onclick="applyJson()">Load</button>
+            </div>
+        </div>
+    </div>
+
     <script src="/static/app.js"></script>
 </body>
 </html>
